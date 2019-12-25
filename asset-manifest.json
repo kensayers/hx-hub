@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/hx-hub/static/css/main.0a3eb81e.chunk.css",
+    "main.js": "/hx-hub/static/js/main.d6a31126.chunk.js",
+    "main.js.map": "/hx-hub/static/js/main.d6a31126.chunk.js.map",
+    "runtime-main.js": "/hx-hub/static/js/runtime-main.878da889.js",
+    "runtime-main.js.map": "/hx-hub/static/js/runtime-main.878da889.js.map",
+    "static/css/2.64a99b10.chunk.css": "/hx-hub/static/css/2.64a99b10.chunk.css",
+    "static/js/2.f49c299d.chunk.js": "/hx-hub/static/js/2.f49c299d.chunk.js",
+    "static/js/2.f49c299d.chunk.js.map": "/hx-hub/static/js/2.f49c299d.chunk.js.map",
+    "index.html": "/hx-hub/index.html",
+    "precache-manifest.b60aa6facb0a0ef559a13e95afa180cd.js": "/hx-hub/precache-manifest.b60aa6facb0a0ef559a13e95afa180cd.js",
+    "service-worker.js": "/hx-hub/service-worker.js",
+    "static/css/2.64a99b10.chunk.css.map": "/hx-hub/static/css/2.64a99b10.chunk.css.map",
+    "static/css/main.0a3eb81e.chunk.css.map": "/hx-hub/static/css/main.0a3eb81e.chunk.css.map",
+    "static/js/2.f49c299d.chunk.js.LICENSE": "/hx-hub/static/js/2.f49c299d.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.878da889.js",
+    "static/css/2.64a99b10.chunk.css",
+    "static/js/2.f49c299d.chunk.js",
+    "static/css/main.0a3eb81e.chunk.css",
+    "static/js/main.d6a31126.chunk.js"
+  ]
+}
