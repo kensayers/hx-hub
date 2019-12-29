@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 // import HxFileLoader from './HxFileLoader.js';
 import ConvertPatch from './HxConvertPatch.js';
-import { Patch, PatchReport} from './HxPatch.js';
+import { Patch, PatchReport, PatchGrid} from './HxPatch.js';
 import FileLoader from './HxFileLoader.js';
 import LoadMetaData from './HxMetaDataLoader.js';
 import ReportViewer from './ReportViewer.js';
@@ -49,6 +49,7 @@ function App() {
                             <p>HX Hub</p>
                         </header>
                         <body>
+                            <PatchGrid patch={patchData}/>
                             <Patch patch={patchData}/>
                         </body>
                     </div>
