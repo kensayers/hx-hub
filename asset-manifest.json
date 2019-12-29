@@ -1,25 +1,29 @@
 {
   "files": {
-    "main.css": "/hx-hub/static/css/main.0a3eb81e.chunk.css",
-    "main.js": "/hx-hub/static/js/main.2f2ee2f1.chunk.js",
-    "main.js.map": "/hx-hub/static/js/main.2f2ee2f1.chunk.js.map",
+    "main.css": "/hx-hub/static/css/main.0d01441c.chunk.css",
+    "main.js": "/hx-hub/static/js/main.d82c35f4.chunk.js",
+    "main.js.map": "/hx-hub/static/js/main.d82c35f4.chunk.js.map",
     "runtime-main.js": "/hx-hub/static/js/runtime-main.878da889.js",
     "runtime-main.js.map": "/hx-hub/static/js/runtime-main.878da889.js.map",
     "static/css/2.64a99b10.chunk.css": "/hx-hub/static/css/2.64a99b10.chunk.css",
-    "static/js/2.b0d62e70.chunk.js": "/hx-hub/static/js/2.b0d62e70.chunk.js",
-    "static/js/2.b0d62e70.chunk.js.map": "/hx-hub/static/js/2.b0d62e70.chunk.js.map",
+    "static/js/2.f7ec1f3c.chunk.js": "/hx-hub/static/js/2.f7ec1f3c.chunk.js",
+    "static/js/2.f7ec1f3c.chunk.js.map": "/hx-hub/static/js/2.f7ec1f3c.chunk.js.map",
     "index.html": "/hx-hub/index.html",
-    "precache-manifest.52149a03538693f26c82785dfddbd40e.js": "/hx-hub/precache-manifest.52149a03538693f26c82785dfddbd40e.js",
+    "precache-manifest.ad52c4e430ff0e38906e701525f9e41e.js": "/hx-hub/precache-manifest.ad52c4e430ff0e38906e701525f9e41e.js",
     "service-worker.js": "/hx-hub/service-worker.js",
     "static/css/2.64a99b10.chunk.css.map": "/hx-hub/static/css/2.64a99b10.chunk.css.map",
-    "static/css/main.0a3eb81e.chunk.css.map": "/hx-hub/static/css/main.0a3eb81e.chunk.css.map",
-    "static/js/2.b0d62e70.chunk.js.LICENSE": "/hx-hub/static/js/2.b0d62e70.chunk.js.LICENSE"
+    "static/css/main.0d01441c.chunk.css.map": "/hx-hub/static/css/main.0d01441c.chunk.css.map",
+    "static/js/2.f7ec1f3c.chunk.js.LICENSE": "/hx-hub/static/js/2.f7ec1f3c.chunk.js.LICENSE",
+    "static/js/main.d82c35f4.chunk.js.LICENSE": "/hx-hub/static/js/main.d82c35f4.chunk.js.LICENSE",
+    "static/media/FX_HX_Category_Impulse Response.png": "/hx-hub/static/media/FX_HX_Category_Impulse Response.3506dc33.png",
+    "static/media/FX_HX_Category_Merge.png": "/hx-hub/static/media/FX_HX_Category_Merge.c627940d.png",
+    "static/media/FX_HX_Category_Split.png": "/hx-hub/static/media/FX_HX_Category_Split.6a016d8d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.878da889.js",
     "static/css/2.64a99b10.chunk.css",
-    "static/js/2.b0d62e70.chunk.js",
-    "static/css/main.0a3eb81e.chunk.css",
-    "static/js/main.2f2ee2f1.chunk.js"
+    "static/js/2.f7ec1f3c.chunk.js",
+    "static/css/main.0d01441c.chunk.css",
+    "static/js/main.d82c35f4.chunk.js"
   ]
 }
