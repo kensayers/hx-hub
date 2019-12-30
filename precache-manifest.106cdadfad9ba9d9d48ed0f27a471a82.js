@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "94b0aea2d3099c2b3848ed92b1fe5493",
+    "revision": "36b532cf5a6c9616527270e49bf62c8b",
     "url": "/hx-hub/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hx-hub/static/css/2.64a99b10.chunk.css"
   },
   {
-    "revision": "ac12d142f5c5da65f04e",
+    "revision": "5cfeffa246c70da5c00d",
     "url": "/hx-hub/static/css/main.0d01441c.chunk.css"
   },
   {
@@ -20,12 +20,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hx-hub/static/js/2.f7ec1f3c.chunk.js.LICENSE"
   },
   {
-    "revision": "ac12d142f5c5da65f04e",
-    "url": "/hx-hub/static/js/main.d82c35f4.chunk.js"
+    "revision": "5cfeffa246c70da5c00d",
+    "url": "/hx-hub/static/js/main.e7d10cc0.chunk.js"
   },
   {
     "revision": "d3d7fce15e26eafb9995add41ed42346",
-    "url": "/hx-hub/static/js/main.d82c35f4.chunk.js.LICENSE"
+    "url": "/hx-hub/static/js/main.e7d10cc0.chunk.js.LICENSE"
   },
   {
     "revision": "810daef5f33e1ceb9a7c",
