@@ -19,21 +19,21 @@ import PreampModels from './resources/models/preamp.models.js';
 
 function ConvertPatch(patch) {
     function convertInputBlock(dsp, path, block) {
-        block["@position"] = -1;
-        block["@path"] = path * 2;
+        // block["@position"] = -1;
+        // block["@path"] = path * 2;
         return convertPrimitiveBlock(dsp, block);
     }
     function convertOutputBlock(dsp, path, block) {
-        block["@position"] = 8;
-        block["@path"] = path * 2;
+        // block["@position"] = 8;
+        // block["@path"] = path * 2;
         return convertPrimitiveBlock(dsp, block);
     }
     function convertSplitJoin(dsp, path, block) {
-        block["@path"] = path + 1 ;
+        // block["@path"] = path + 1 ;
         return convertPrimitiveBlock(dsp, block);
     }
     function convertBlock(dsp, block) {
-        block["@path"] = block["@path"] * 2 ;
+        // block["@path"] = block["@path"] * 2 ;
         return convertPrimitiveBlock(dsp, block);
     }
     function convertPrimitiveBlock(dsp, block) {
@@ -148,92 +148,135 @@ function ConvertPatch(patch) {
         }
         return convertedBlock;
     }
-    var convertedPatch = {};
+    var convertedPatch = {
+        dsp0:{
+            splitJoins:[{},{},{},{},{},{},{},{},{}],
+            paths:[{
+                input:{},
+                blocks:[{},{},{},{},{},{},{},{}],
+                output:{}
+            },
+            {
+                input:{},
+                blocks:[{},{},{},{},{},{},{},{}],
+                output:{}
+            }]
+        },
+        dsp1:{
+            splitJoins:[{},{},{},{},{},{},{},{},{}],
+            paths:[{
+                input:{},
+                blocks:[{},{},{},{},{},{},{},{}],
+                output:{}
+            },
+                {
+                    input:{},
+                    blocks:[{},{},{},{},{},{},{},{}],
+                    output:{}
+                }]
+        }
+    };
     convertedPatch.name = patch.data.meta.name;
     convertedPatch.blocks = [];
     if ("inputA" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertInputBlock(0, 0, patch.data.tone.dsp0.inputA));
+        convertedPatch.dsp0.paths[0].input = convertInputBlock(0, 0, patch.data.tone.dsp0.inputA);
     }
     if ("inputB" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertInputBlock(0, 1, patch.data.tone.dsp0.inputB));
+        convertedPatch.dsp0.paths[1].input = convertInputBlock(0, 1, patch.data.tone.dsp0.inputB);
     }
     if ("inputA" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertInputBlock(1, 0, patch.data.tone.dsp0.inputA));
+        convertedPatch.dsp1.paths[0].input = convertInputBlock(1, 0, patch.data.tone.dsp0.inputA);
     }
     if ("inputB" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertInputBlock(1, 1, patch.data.tone.dsp0.inputB));
+        convertedPatch.dsp1.paths[1].input = convertInputBlock(1, 1, patch.data.tone.dsp0.inputB);
     }
     if ("outputA" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertOutputBlock(0, 0, patch.data.tone.dsp0.outputA));
+        convertedPatch.dsp0.paths[0].output = convertOutputBlock(0, 0, patch.data.tone.dsp0.outputA);
     }
     if ("outputB" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertOutputBlock(0, 1, patch.data.tone.dsp0.outputB));
+        convertedPatch.dsp0.paths[1].output = convertOutputBlock(0, 1, patch.data.tone.dsp0.outputB);
     }
     if ("outputA" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertOutputBlock(1, 0, patch.data.tone.dsp1.outputA));
+        convertedPatch.dsp1.paths[0].output = convertOutputBlock(1, 0, patch.data.tone.dsp1.outputA);
     }
     if ("outputB" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertOutputBlock(1, 1, patch.data.tone.dsp1.outputB));
+        convertedPatch.dsp1.paths[1].output = convertOutputBlock(1, 1, patch.data.tone.dsp1.outputB);
     }
     if ("split" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertSplitJoin(0, 0, patch.data.tone.dsp0.split));
+        convertedPatch.dsp0.splitJoins[patch.data.tone.dsp0.split["@position"]] = convertSplitJoin(0, 0, patch.data.tone.dsp0.split);
     }
     if ("split" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertSplitJoin(1, 0, patch.data.tone.dsp1.split));
+        convertedPatch.dsp1.splitJoins[patch.data.tone.dsp1.split["@position"]] = convertSplitJoin(0, 0, patch.data.tone.dsp1.split);
     }
     if ("join" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertSplitJoin(0, 0, patch.data.tone.dsp0.join));
+        convertedPatch.dsp0.splitJoins[patch.data.tone.dsp0.join["@position"]] = convertSplitJoin(0, 0, patch.data.tone.dsp0.join);
     }
     if ("join" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertSplitJoin(1, 0, patch.data.tone.dsp1.join));
+        convertedPatch.dsp1.splitJoins[patch.data.tone.dsp1.join["@position"]] = convertSplitJoin(0, 0, patch.data.tone.dsp1.join);
     }
     if ("block0" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block0));
+        let blk = patch.data.tone.dsp0.block0;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, patch.data.tone.dsp0.block0);
     }
     if ("block1" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block1));
+        let blk = patch.data.tone.dsp0.block1;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block2" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block2));
+        let blk = patch.data.tone.dsp0.block2;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block3" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block3));
+        let blk = patch.data.tone.dsp0.block3;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block4" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block4));
+        let blk = patch.data.tone.dsp0.block4;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block5" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block5));
+        let blk = patch.data.tone.dsp0.block5;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block6" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block6));
+        let blk = patch.data.tone.dsp0.block6;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block7" in patch.data.tone.dsp0) {
-        convertedPatch.blocks.push(convertBlock(0, patch.data.tone.dsp0.block7));
+        let blk = patch.data.tone.dsp0.block7;
+        convertedPatch.dsp0.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block0" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block0));
+        let blk = patch.data.tone.dsp1.block0;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block1" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block1));
+        let blk = patch.data.tone.dsp1.block1;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block2" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block2));
+        let blk = patch.data.tone.dsp1.block2;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block3" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block3));
+        let blk = patch.data.tone.dsp1.block3;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block4" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block4));
+        let blk = patch.data.tone.dsp1.block4;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block5" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block5));
+        let blk = patch.data.tone.dsp1.block5;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block6" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block6));
+        let blk = patch.data.tone.dsp1.block6;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     if ("block7" in patch.data.tone.dsp1) {
-        convertedPatch.blocks.push(convertBlock(1, patch.data.tone.dsp1.block7));
+        let blk = patch.data.tone.dsp1.block7;
+        convertedPatch.dsp1.paths[blk["@path"]].blocks[blk["@position"]] = convertBlock(0, blk);
     }
     console.log(convertedPatch);
     return convertedPatch;

@@ -69,10 +69,10 @@ export function Block(block) {
             rows.push(<tr><th scope="row">{key}</th><td>{block[key]}</td></tr>);
         }
     }
-    let blockId =  block["@dsp"] + "_ " + block["@path"] + "_" + block["@position"];
+    let blockId =  block["@dsp"] + "_" + block["@path"] + "_" + block["@position"];
     return (
-        <div class="col mb-4">
-            <h2 id={"_" + blockId}>{block["@name"]} ({block["@dsp"]},{block["@path"]},{block["@position"]})</h2>
+        <div class="collapse show" id={"_" + blockId}>
+            <h2 >{block["@name"]} ({block["@dsp"]},{block["@path"]},{block["@position"]})</h2>
             <table class="table table-dark">
                 <tbody>
                     {rows}
@@ -106,11 +106,15 @@ export function BlockReport(block) {
 }
 
 export function GridBlock(block) {
-    let blockId =  block["@dsp"] + "_ " + block["@path"] + "_" + block["@position"];
-    return (
-        <div>
+    let blockId =  block["@dsp"] + "_" + block["@path"] + "_" + block["@position"];
+    if ("@name" in block) {
+        return (
+            <div>
             <div><img src={require('./resources/icons_category/' + getCategoryIconName(block))}/></div>
-            <div><b><a href={"#_" + blockId}>{block["@name"]}</a></b></div>
+        <div><b><a data-toggle="collapse" aria-expanded="true" href={"#_" + blockId} aria-controls={"_" + blockId}  data-target={"#_" + blockId}>{block["@name"]}</a></b></div>
         </div>
-    )
+        )
+    } else {
+        return (<div></div>)
+    }
 }
