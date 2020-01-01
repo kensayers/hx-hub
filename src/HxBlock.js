@@ -40,6 +40,10 @@ function getCategoryIconName(block) {
         return "FX_HX_Category_Modulation.png";
     } else if (block["@model"].startsWith("HD2_Rotary")) {
         return "FX_HX_Category_Modulation.png";
+    } else if (block["@model"].startsWith("HD2_Vibrato")) {
+        return "FX_HX_Category_Modulation.png";
+    } else if (block["@model"].startsWith("HD2_Tremolo")) {
+        return "FX_HX_Category_Modulation.png";
     } else if (block["@model"].startsWith("HD2_Pitch")) {
         return "FX_HX_Category_PitchSynth.png";
     } else if (block["@model"].startsWith("HD2_Preamp")) {
@@ -70,16 +74,24 @@ export function Block(block) {
         }
     }
     let blockId =  block["@dsp"] + "_" + block["@path"] + "_" + block["@position"];
-    return (
-        <div class="collapse show" id={"_" + blockId}>
-            <h2 >{block["@name"]} ({block["@dsp"]},{block["@path"]},{block["@position"]})</h2>
-            <table class="table table-dark">
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
-        </div>
-    );
+    if ("@name" in block) {
+        return (
+            <div class="collapse show" id={"_" + blockId}>
+                <h2 >{block["@name"]} ({block["@dsp"]},{block["@path"]},{block["@position"]})</h2>
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr><th>Parameter</th><th>Value</th></tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </table>
+            </div>
+        )
+    } else {
+        return (<div/>)
+    }
+
 }
 
 export function BlockReport(block) {

@@ -26,15 +26,11 @@ function App() {
   // console.log(metaData);
   return (
     <Router>
-        <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <Link class="nav-link" to="/">Home</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/loadFile">Load File</Link>
                         </li>
                         <li class="nav-item dropdown">
                             <Link class="nav-link" to="/report">Report</Link>
@@ -49,18 +45,11 @@ function App() {
                             <p>HX Hub</p>
                         </header>
                         <body>
-                            <PatchGrid patch={patchData}/>
-                            <Patch patch={patchData}/>
-                        </body>
-                    </div>
-                </Route>
-                <Route path="/loadFile">
-                    <div className="App">
-                        <header className="App-header">
-                            <p>HX Hub</p>
-                        </header>
-                        <body>
                             <FileLoader onUploadCompleted={handleData}/>
+                            <PatchGrid patch={patchData}/>
+                            <div class="container">
+                                <Patch patch={patchData}/>
+                            </div>
                         </body>
                     </div>
                 </Route>
@@ -68,7 +57,6 @@ function App() {
                     <PatchReport patch={patchData}/>
                 </Route>
             </Switch>
-        </div>
     </Router>
 
 );
